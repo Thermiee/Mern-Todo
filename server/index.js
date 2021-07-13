@@ -7,11 +7,7 @@ dotenv.config();
 app.use(express.json({ extended: true }))
 app.use(express.urlencoded({ extended: true }))
 app.use(cors());
-
-
-const mongodb = "mongodb+srv://mern:merntodo123@cluster0.yduiu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-
-
+const mongodb = "mongodb+srv://mern:merntodo123@cluster0.yduiu.mongodb.net/merntodo?retryWrites=true&w=majority"
 app.get('/', (req, res) => {
     res.send('Welcome to server')
 })
