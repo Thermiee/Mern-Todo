@@ -9,7 +9,7 @@ function App() {
   const [todos, setTodos] = useState(null);
   const [currentId, setCurrentId] = useState(0);
   useEffect(() => {
-    let currentTodo = currentId !== 0 ? todos.find(todo => todo._id === currentId) : { title: '', content: '' }
+    let currentTodo = currentId != 0 ? todos.find(todo => todo._id === currentId) : { title: '', content: '' }
     setTodo(currentTodo)
   }, [currentId])
   useEffect(() => {
