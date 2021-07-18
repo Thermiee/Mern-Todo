@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Preloader from "./components/Preloader";
-import { createTodo, readTodos } from "./functions";
+import { createTodo, readTodos, updateTodo } from "./functions";
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   const [todos, setTodos] = useState(null);
   const [currentId, setCurrentId] = useState(0);
   useEffect(() => {
-    let currentTodo = currentId != 0 ? todos.find(todo => todo._id === currentId) : { title: '', content: '' }
+    let currentTodo = currentId !== 0 ? todos.find(todo => todo._id === currentId) : { title: '', content: '' }
     setTodo(currentTodo)
   }, [currentId])
   useEffect(() => {
@@ -18,7 +18,7 @@ function App() {
       setTodos(result)
     }
     fetchData()
-  }, [])
+  }, [currentId])
   const clear = () => {
     setCurrentId(0);
     setTodo({ title: '', content: '' });
@@ -34,9 +34,16 @@ function App() {
   }, [])
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    if (currentId === 0) {
+      const result = await createTodo(todo)
+      setTodos([...todos, result])
+      clear();
+    } else {
+      await updateTodo(currentId, todo)
+      clear();
 
-    const result = await createTodo(todo)
-    setTodos([...todos, result])
+    }
+
   }
   return (
     <div className="container">
