@@ -1,0 +1,15 @@
+body {
+    background: #222;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://unsplash.it/1200/800/?random');
+  }
+  
+  .container {
+    background: white;
+    padding: 20px 25px;
+    margin-top: 80px;
+    border: 5px solid #26a69a;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    position: relative;
+  }
